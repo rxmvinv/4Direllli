@@ -1,0 +1,93 @@
+items-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-elem {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 150px;
+    background: goldenrod;
+    border-radius: 18px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: Arial;
+    font-weight: 900;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.custom-elem div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.custom-elem span {
+    display: block;
+    text-align: center;
+    pointer-events: none;
+}
+
+.custom-elem .expanded {
+}
+
+.custom-elem .expanded .details {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+    background: rebeccapurple;
+
+    animation: expand 0.3s linear forwards;
+
+}
+
+.custom-elem .released {
+}
+
+.custom-elem .released .details,
+.custom-elem .details {
+    animation: release 0.3s linear forwards;
+}
+
+.custom-elem .details {
+    flex-direction: column;
+    position: absolute;
+}
+
+img {
+    width: 100%;
+    max-width: 70px;
+    content:url(https://spng.pngfind.com/pngs/s/19-198304_github-logo-png-transparent-github-logo-png-png.png);
+    pointer-events: none;
+}
+
+@keyframes expand {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes release {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
+@-webkit-keyframes expand {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@-webkit-keyframes release {
+    from {opacity: 1}
+    to {opacity: 0}
+}
