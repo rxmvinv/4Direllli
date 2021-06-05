@@ -1,49 +1,34 @@
-// describe("Fetching data", function() {
-//     var itemsList = document.querySelector("items-list");
+describe("Fetching data", function() {
+
+  var response;
+
+  beforeEach(function() {
+    response = getData();
+  });
   
-//     it("and so is a spec", function() {
-//       var counter = [...itemsList.children].length; // > 0
-  
-//       expect(counter).toBe(37); // true
-//     });
-// });
+  it("check only success", async function() {
 
+    // Assurance to be resolved at first
+    await expectAsync(response).toBeResolved();
 
-// describe("Fetching data", function() {
+    response.then(async res => {
 
-//     beforeEach(function() {
-//        jasmine.Ajax.install();
-//     });  
+      const fetchedData = await res.json();
+
+      // Check is fetched data is array
+      expect(Array.isArray(fetchedData)).toBe(true);
+      // Check if array length is 37 in our particular case
+      expect(fetchedData.length).toBe(37);
     
-//     afterEach(function() {
-//       jasmine.Ajax.uninstall();
-//     });
+    });
+
+  });
   
+  // Emitting get request
+  async function getData() {
+    const response = await fetch('https://5dc588200bbd050014fb8ae1.mockapi.io/assessment');
+
+    return response;
+  };
   
-//     it("and so is a spec", function() {
-//       var doneFn = jasmine.createSpy("success");
-
-//       var xhr = new XMLHttpRequest();
-//       xhr.onreadystatechange = function(args) {
-//         if (this.readyState == this.DONE) {
-//           doneFn(this.responseText);
-//         }
-//       };
-
-//       xhr.open("GET", "");
-//       xhr.send();
-
-//       expect(jasmine.Ajax.requests.mostRecent().url).toBe('/some/cool/url');
-//       expect(doneFn).not.toHaveBeenCalled();
-
-//       jasmine.Ajax.requests.mostRecent().respondWith({
-
-//         "status": 200,
-//         "contentType": 'text/plain',
-//         "responseText": 'awesome response'
- 
-//       });
-  
-//       expect(doneFn).toHaveBeenCalledWith('awesome response');
-//     });
-// });
+});

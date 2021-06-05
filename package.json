@@ -16,6 +16,10 @@
     "serve-favicon": "*"
   },
   "devDependencies": {
-    "jasmine": "^3.7.0"
+    "babel-register": "^6.26.0",
+    "chromedriver": "^91.0.0",
+    "jasmine": "^3.7.0",
+    "jasmine-ajax": "^4.0.0",
+    "jasmine-browser-runner": "^0.5.0"
   }
 }
